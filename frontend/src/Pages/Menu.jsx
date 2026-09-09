@@ -13,13 +13,13 @@ import donutImage from "../assets/Chocolate glazed donuts.jpeg";
 import bakeryPastriesImage from "../assets/Fresh Bakery Pastries.jpeg";
 import sourdoughImage from "../assets/Fresh baked sourdough.jpeg";
 
-const emptyMenuData = { Coffee: [], Bakery: [], Desserts: [] };
+const emptyMenuData = { Coffee: [], Bakery: [] };
 
 const normalizeMenuData = (items) => {
-  const grouped = { Coffee: [], Bakery: [], Desserts: [] };
+  const grouped = { Coffee: [], Bakery: [] };
 
   items.forEach((item) => {
-    const category = (item.category || '').toLowerCase();
+    const category = (item.category || '').toLowerCase().trim();
     const normalizedItem = {
       ...item,
       name: item.name,
@@ -32,10 +32,8 @@ const normalizeMenuData = (items) => {
 
     if (category === 'coffee' || category === 'cold') {
       grouped.Coffee.push(normalizedItem);
-    } else if (category === 'bakery') {
+    } else if (category === 'bakery' || category === 'bakeryitems' || category === 'dessert' || category === 'desserts') {
       grouped.Bakery.push(normalizedItem);
-    } else {
-      grouped.Desserts.push(normalizedItem);
     }
   });
 
@@ -64,10 +62,10 @@ const Menu = () => {
     fetchMenu();
   }, []);
 
-  const categories = ["All", "Coffee", "Bakery", "Desserts"];
+  const categories = ["All", "Coffee", "Bakery"];
   const filteredItems =
     activeCategory === "All"
-      ? [...(menuData.Coffee || []), ...(menuData.Bakery || []), ...(menuData.Desserts || [])]
+      ? [...(menuData.Coffee || []), ...(menuData.Bakery || [])]
       : menuData[activeCategory] || [];
 
   return (

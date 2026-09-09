@@ -6,10 +6,10 @@ const menuItemSchema = new mongoose.Schema({
   desc: { type: String, required: true },
   rating: { type: String, default: '5.0' },
   image: { type: String, required: true },
-  category: { 
-    type: String, 
-    required: true, 
-    enum: ['Coffee', 'coffee', 'cold', 'bakery'] // Capital C added
+  category: {
+    type: String,
+    required: true,
+    enum: ['Coffee', 'coffee', 'cold', 'Bakery', 'bakery', 'Dessert', 'dessert', 'Desserts', 'desserts']
   }
 }, { timestamps: true });
 

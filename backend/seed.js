@@ -14,7 +14,7 @@ const seedDatabase = async () => {
     console.log('Cleared existing menu items...');
 
     // Read JSON file
-    const jsonPath = 'c:\\Users\\shanh\\Downloads\\brew_bloom_menu.json';
+    const jsonPath = 'c:\\Users\\shanh\\Downloads\\coffee_bakery_menu.json';
     const jsonData = fs.readFileSync(jsonPath, 'utf-8');
     const menuItems = JSON.parse(jsonData);
 
